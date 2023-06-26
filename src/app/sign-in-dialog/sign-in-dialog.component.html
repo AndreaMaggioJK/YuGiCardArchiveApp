@@ -1,0 +1,45 @@
+<form  [formGroup]="FormSignIn" (ngSubmit)="onSubmitSignIn()" >
+    <div class="container container-signIn-dialog">
+        <div class="row" >
+            <a class="dismiss-button" [mat-dialog-close]="true">X</a>
+            <h2>Sign In</h2>
+        </div>
+        <div class="row" >
+            <label for="nickName">Username</label>
+            <input type="text" id="nickName" formControlName="nickName" class="form-control smaller-input">
+        </div>
+        <div class="row" >
+            <label for="email">Email</label>
+            <input type="text" id="email" formControlName="email" class="form-control smaller-input">
+            <div *ngIf="FormSignIn.get('email')?.invalid && FormSignIn?.get('email')?.touched" class="error-message Err">
+                <div *ngIf="FormSignIn.get('email')?.hasError('required')">Email is required.</div>
+                <div *ngIf="FormSignIn.get('email')?.hasError('email')">Invalid Email format</div>
+            </div>
+        </div>
+        <div class="row" >
+            <label for="pw">Password</label>
+            <input type="text" id="pw" formControlName="pw" class="form-control smaller-input">
+            <div *ngIf="FormSignIn.get('pw')?.invalid && FormSignIn?.get('pw')?.touched" class="error-message Err">
+                <div *ngIf="FormSignIn.get('pw')?.hasError('required')">Password is required.</div>
+                <div *ngIf="FormSignIn.get('pw')?.hasError('minlength')">Password should be at least of 8 characters</div>
+            </div>
+        </div>
+        <div class="row" >
+            <label for="pw">Repeat Password</label>
+            <input type="text" id="pwConfirm" formControlName="pwConfirm" class="form-control smaller-input">
+            <div *ngIf="FormSignIn.get('pwConfirm')?.invalid && FormSignIn?.get('pwConfirm')?.touched
+                 || FormSignIn.get('pw')?.invalid" class="error-message Err">
+                <div *ngIf="FormSignIn.get('pwConfirm')?.hasError('passwordMismatch')">Wrong Password</div>
+              </div>
+        </div>
+        <div class="row" >
+        </div>
+        <div class="row" >
+            <button type="submit" class="btn btn-primary SignInButton" [disabled]="FormSignIn.invalid">Sign In</button>
+        </div>
+        <div class="row" >
+            <div class="SignLogInAlternativeText">Already have an account?</div>
+            <button type="button" class="LogInButton" (click)="OpenLogIn()" >Log In</button>
+        </div>
+    </div>
+</form>

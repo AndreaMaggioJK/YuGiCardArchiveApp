@@ -1,0 +1,27 @@
+<form  [formGroup]="FormLogIn" (ngSubmit)="onSubmitLogIn()" >
+    <div class="container container-logIn-dialog">
+        <div class="row" >
+            <a class="dismiss-button" [mat-dialog-close]="true">X</a>
+            <h2>Log In</h2>
+        </div>
+        <div class="row" >
+            <label for="email">Email</label>
+            <input type="text" id="email" formControlName="email" class="form-control smaller-input">
+        </div>
+        <div class="row" >
+            <label for="pw">Password</label>
+            <input type="text" id="pw" formControlName="pw" class="form-control smaller-input">
+        </div>
+        <div class="row" >
+        </div>
+        <div class="row" >
+            <p id="ErrorEmPw" class="ErrorEmPw">Error: Email or password entered is wrong</p>
+        </div>
+        <div class="row" >
+            <button class="LogInButton">Log In</button>
+        </div>
+        <div class="row" >
+            <button type="button" class="SignInButton" (click)="OpenSignIn()">Sign In</button>
+        </div>
+    </div>
+</form>

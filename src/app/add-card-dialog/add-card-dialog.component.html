@@ -1,0 +1,178 @@
+<form  [formGroup]="FormAddCard" (ngSubmit)="onSubmitAddCard()" >
+    <div class="container container-logIn-dialog">
+        <div class="row" >
+            <div class="col-sm-1">
+                <a class="dismiss-button" [mat-dialog-close]="true">X</a>
+            </div>
+            <div class="col-sm-1"></div>
+            <div class="col-sm-6">
+                <h2>Add Card</h2>
+            </div>
+        </div>
+        <div class="container mt-3 border">
+            <div class="row" >
+                <div class="col-sm-6">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" formControlName="name" class="form-control smaller-input">
+                    <div *ngIf="FormAddCard?.get('name')?.invalid && FormAddCard?.get('name')?.touched" class="error-message Err">
+                        <div *ngIf="FormAddCard?.get('name')?.hasError('required')" >Name is required</div>
+                    </div>                      
+                </div>
+                <div class="col-sm-6">
+                    <label for="attribute">Attribute</label>
+                    <select id="attribute" class="form-select smaller-input" formControlName="attribute">
+                        <option value=""></option>
+                        <option value="dark">DARK</option>
+                        <option value="divine">DIVINE</option>
+                        <option value="earth">EARTH</option>
+                        <option value="fire">FIRE</option>
+                        <option value="light">LIGHT</option>
+                        <option value="water">WATER</option>
+                        <option value="wind">WIND</option>
+                    </select>
+                    <div *ngIf="FormAddCard.get('attribute')?.invalid && (FormAddCard.get('attribute')?.touched || FormAddCard.get('attribute')?.dirty)" class="error-message Err">
+                        <div *ngIf="FormAddCard.get('attribute')?.hasError('required')">Attributes is required.</div>
+                    </div>                  
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <label for="monsterType">Monster Type</label>
+                    <select id="monsterType" formControlName="monsterType" class="form-select smaller-input">
+                        <option value=""></option>
+                        <option value="Aqua">Aqua</option>
+                        <option value="Beast">Beast</option>
+                        <option value="BeastWarrior">Beast-Warrior</option>
+                        <option value="Cyberse">Cyberse</option>
+                        <option value="Dinosaur">Dinosaur</option>
+                        <option value="Dragon">Dragon</option>
+                        <option value="Fairy">Fairy</option>
+                        <option value="Fiend">Fiend</option>
+                        <option value="Fish">Fish</option>
+                        <option value="Insect">Insect</option>
+                        <option value="Machine">Machine</option>
+                        <option value="Plant">Plant</option>
+                        <option value="Psychic">Psychic</option>
+                        <option value="Pyro">Pyro</option>
+                        <option value="Reptile">Reptile</option>
+                        <option value="Rock">Rock</option>
+                        <option value="SeaSerpent">Sea Serpent</option>
+                        <option value="Spellcaster">Spellcaster</option>
+                        <option value="Thunder">Thunder</option>
+                        <option value="Warrior">Warrior</option>
+                        <option value="WingedBeast">Winged Beast</option>
+                        <option value="Wyrm">Wyrm</option>
+                        <option value="Zombie">Zombie</option>
+                        <option value="DivineBeast">Divine-Beast</option>
+                        <option value="Immortal">Immortal</option>
+                        <option value="Creator God">Creator God</option>
+                    </select>
+                    <div *ngIf="FormAddCard.get('monsterType')?.invalid && (FormAddCard.get('monsterType')?.touched 
+                        || FormAddCard.get('monsterType')?.dirty)" class="error-message Err">
+                        <div *ngIf="FormAddCard.get('monsterType')?.hasError('required')">MonsterType is required.</div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <label for="cardType">Type</label>
+                    <select id="cardType" formControlName="cardType" class="form-select smaller-input">
+                        <option value=""></option>
+                        <option value="Normal">Normal</option>
+                        <option value="Effect">Effect</option>
+                        <option value="Union">Union</option>
+                        <option value="Ritual">Ritual</option>
+                        <option value="Fusion">Fusion</option>
+                        <option value="Synchro">Synchro</option>
+                        <option value="Xyz">Xyz</option>
+                        <option value="Pendulum">Pendulum</option>
+                        <option value="Link">Link</option>
+                        <option value="Spell">Spell</option>
+                        <option value="Trap">Trap</option>
+                    </select>
+                    <div *ngIf="FormAddCard.get('cardType')?.invalid && (FormAddCard.get('cardType')?.touched
+                         || FormAddCard.get('cardType')?.dirty)" class="error-message Err">
+                        <div *ngIf="FormAddCard.get('cardType')?.hasError('required')">Type is required.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" >
+                <div class="col-sm-6">
+                    <label for="levelRank">Level/Rank</label>
+                    <input type="number" id="levelRank" formControlName="levelRank" class="form-control smaller-input"
+                        [ngClass]="{ 'is-invalid': FormAddCard.get('levelRank')?.invalid && FormAddCard.get('levelRank')?.touched }">
+                    <div *ngIf="FormAddCard.get('levelRank')?.invalid && FormAddCard?.get('levelRank')?.touched" class="error-message Err">
+                        <div *ngIf="FormAddCard.get('levelRank')?.hasError('required')">Level/Rank is required</div>
+                        <div *ngIf="FormAddCard.get('levelRank')?.hasError('min')">Level/Rank should be at least 0</div>
+                        <div *ngIf="FormAddCard.get('levelRank')?.hasError('max')">Level/Rank should be at most 12</div>
+                        <div *ngIf="FormAddCard.get('levelRank')?.hasError('pattern')">Invalid Level/Rank format</div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <label for="pendulum">Pendulum</label>
+                    <input type="number" id="pendulum" formControlName="pendulum" class="form-control smaller-input"
+                        [ngClass]="{ 'is-invalid': FormAddCard.get('pendulum')?.invalid && FormAddCard.get('pendulum')?.touched }">
+                    <div *ngIf="FormAddCard.get('pendulum')?.invalid && FormAddCard?.get('pendulum')?.touched" class="error-message Err">
+                        <div *ngIf="FormAddCard.get('pendulum')?.hasError('required')">Pendulum is required</div>
+                        <div *ngIf="FormAddCard.get('pendulum')?.hasError('min')">Pendulum should be at least 0</div>
+                        <div *ngIf="FormAddCard.get('pendulum')?.hasError('max')">Pendulum should be at most 12</div>
+                        <div *ngIf="FormAddCard.get('pendulum')?.hasError('pattern')">Invalid Pendulum format</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" >
+                <div class="col-sm-6">
+                    <label for="link">Link</label>
+                    <input type="number" id="link" formControlName="link" class="form-control smaller-input"
+                        [ngClass]="{ 'is-invalid': FormAddCard.get('link')?.invalid && FormAddCard.get('link')?.touched }">
+                    <div *ngIf="FormAddCard.get('link')?.invalid && FormAddCard?.get('link')?.touched" class="error-message Err">
+                        <div *ngIf="FormAddCard.get('link')?.hasError('required')">Link is required</div>
+                        <div *ngIf="FormAddCard.get('link')?.hasError('min')">Link should be at least 0</div>
+                        <div *ngIf="FormAddCard.get('link')?.hasError('max')">Link should be at most 12</div>
+                        <div *ngIf="FormAddCard.get('link')?.hasError('pattern')">Invalid Link format</div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <label for="atk">ATK</label>
+                    <input type="text" id="atk" formControlName="atk" class="form-control smaller-input">
+                    <div *ngIf="FormAddCard.get('atk')?.invalid && FormAddCard?.get('atk')?.touched" class="error-message Err">
+                        <div *ngIf="FormAddCard.get('atk')?.hasError('required')">ATK is required</div>
+                        <div *ngIf="FormAddCard.get('atk')?.hasError('min')">ATK should be at least 0</div>
+                        <div *ngIf="FormAddCard.get('atk')?.hasError('pattern')">Invalid ATK format</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" >
+                <div class="col-sm-6">
+                    <label for="def">DEF</label>
+                    <input type="text" id="def" formControlName="def" class="form-control smaller-input">
+                    <div *ngIf="FormAddCard.get('def')?.invalid && FormAddCard?.get('def')?.touched" class="error-message Err">
+                        <div *ngIf="FormAddCard.get('def')?.hasError('required')">DEF is required</div>
+                        <div *ngIf="FormAddCard.get('def')?.hasError('min')">DEF should be at least 0</div>
+                        <div *ngIf="FormAddCard.get('def')?.hasError('pattern')">Invalid DEF format</div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <label for="icon">Type of Trap/Spell</label>
+                    <select id="icon" formControlName="icon" class="form-select smaller-input">
+                        <option value=""></option>
+                        <option value="Normal">Normal</option>
+                        <option value="Continuous">Continuous</option>
+                        <option value="CounterTraps">Counter Traps</option>
+                        <option value="Equip">Equip</option>
+                        <option value="QuickPlay">Quick-Play</option>
+                        <option value="Field">Field</option>
+                        <option value="Ritual">Ritual</option>
+                    </select>
+                    <div *ngIf="FormAddCard.get('icon')?.invalid && (FormAddCard.get('icon')?.touched
+                         || FormAddCard.get('icon')?.dirty)" class="error-message Err">
+                        <div *ngIf="FormAddCard.get('icon')?.hasError('required')">Trap/Spell is required.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-sm-6">
+                    <button type="submit" class="btn btn-primary" [disabled]="FormAddCard.invalid">ADD</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

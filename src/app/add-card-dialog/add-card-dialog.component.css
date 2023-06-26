@@ -1,0 +1,61 @@
+.container-logIn-dialog {
+    height: 90%!important;
+    width: 50%!important;
+    background-color: #f2f2f2 !important;
+    padding: 0.8% !important;
+    border-radius: 5px !important;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1) !important;
+    position: fixed !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    display: block!important;
+    justify-content: center !important;
+    align-items: center !important;
+    z-index: 9999 !important;
+  }
+  
+  
+
+  .container-logIn-dialog h2 {
+    margin: 0;
+    align-self: center;
+    text-align: center;
+  }
+  
+  .AddButton {
+    position: relative;
+    padding: 10px 20px !important;
+    background-color: #007bff !important;
+    color: #fff !important;
+    border: none !important;
+    border-radius: 5px !important;
+    cursor: pointer !important;
+    width: fit-content;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .smaller-input {
+    width: 50%!important; 
+  }
+
+  .smaller-label{
+    width: 50%!important;
+  }
+
+  .dismiss-button {
+    position: relative;
+    top: 0;
+    left: 0;
+    background-color: transparent;
+    border: none;
+    color: #000;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  .Err{
+    color: red!important;
+  }
